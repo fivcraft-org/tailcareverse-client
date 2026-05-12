@@ -54,7 +54,7 @@ const ForgotPassword = () => {
                 <img src={logo} alt="Logo" className="h-8 w-auto brightness-0 invert" />
               </motion.div>
               <div className="flex flex-col leading-none">
-                <span className="text-2xl font-black tracking-tighter text-black uppercase italic">
+                <span className="text-2xl font-black tracking-tighter text-black uppercase">
                   TailCare<span className="text-emerald-600">Verse</span>
                 </span>
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/60">Premium Ecosystem</span>
@@ -64,13 +64,13 @@ const ForgotPassword = () => {
 
           <div>
             <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.8, duration: 1 }}>
-              <Title className="text-7xl md:text-8xl font-semibold text-white leading-[0.85] tracking-tighter mb-8 uppercase italic drop-shadow-2xl">
-                RECOVER <br/> YOUR <br/> <span className="text-emerald-400 not-italic">ACCOUNT.</span>
+              <Title className="text-7xl md:text-8xl font-semibold text-white leading-[0.85] tracking-tighter mb-8 uppercase drop-shadow-2xl">
+                RECOVER <br/> YOUR <br/> <span className="text-emerald-400">ACCOUNT.</span>
               </Title>
             </motion.div>
             <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 1.2, duration: 1 }} className="flex items-center gap-6">
               <div className="h-16 w-1 bg-white rounded-full" />
-              <Text className="text-white text-lg font-semibold leading-relaxed max-w-sm italic drop-shadow-xl">
+              <Text className="text-white text-lg font-semibold leading-relaxed max-w-sm drop-shadow-xl">
                 "We'll send a secure OTP to get you back into your Verse account quickly."
               </Text>
             </motion.div>
@@ -100,9 +100,9 @@ const ForgotPassword = () => {
           <div className="mb-8">
             <motion.div initial={{ width: 0 }} animate={{ width: 40 }} transition={{ delay: 0.5, duration: 1 }} className="h-[2px] bg-emerald-500 mb-5" />
             <Title className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none mb-3">
-              FORGOT <span className="text-emerald-500 italic">PASSWORD.</span>
+              FORGOT <span className="text-emerald-500">PASSWORD.</span>
             </Title>
-            <Text className="text-white/50 font-semibold text-sm italic">
+            <Text className="text-white/50 font-semibold text-sm">
               Enter your email to receive a reset code.
             </Text>
           </div>
@@ -139,9 +139,9 @@ const ForgotPassword = () => {
                 </motion.div>
 
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="text-center">
-                  <Text className="text-white/30 font-bold italic text-xs">
+                  <Text className="text-white/30 font-bold text-xs">
                     Remembered it?{" "}
-                    <Link to="/login" className="text-emerald-500 hover:text-emerald-400 transition-colors no-underline font-black not-italic uppercase tracking-widest">
+                    <Link to="/login" className="text-emerald-500 hover:text-emerald-400 transition-colors no-underline font-black uppercase tracking-widest">
                       Login
                     </Link>
                   </Text>

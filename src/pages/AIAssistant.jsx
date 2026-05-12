@@ -476,7 +476,7 @@ const AIAssistant = () => {
             <Info size={10} className="md:size-[12px]" /> Disclaimer
           </p>
           <span className="hidden md:block w-1 h-1 rounded-full bg-white/20" />
-          <p className="text-[9px] md:text-[11px] font-medium italic opacity-60 text-center" style={{ color: t.text }}>
+          <p className="text-[9px] md:text-[11px] font-medium opacity-60 text-center" style={{ color: t.text }}>
             Consult a vet for emergencies. 🩺
           </p>
         </div>

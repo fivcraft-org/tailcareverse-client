@@ -161,7 +161,7 @@ export default function Landing() {
               <img src={logo} alt="Logo" className="h-7 w-auto brightness-0 invert" />
             </motion.div>
             <div className="flex flex-col leading-none">
-              <span className="text-2xl font-black tracking-tighter text-white uppercase italic">
+              <span className="text-2xl font-black tracking-tighter text-white uppercase">
                 TailCare<span className="text-emerald-500">Verse</span>
               </span>
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">Premium Ecosystem</span>
@@ -229,11 +229,11 @@ export default function Landing() {
                 
                 <Title className="text-7xl md:text-9xl font-black leading-[0.9] mb-10 tracking-tighter">
                   ELEVATING <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 uppercase italic">PET LIFE</span> <br/>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 uppercase">PET LIFE</span> <br/>
                   <span className="text-slate-800">BEYOND.</span>
                 </Title>
                 
-                <Text size="xl" className="text-slate-400 max-w-2xl mb-14 leading-relaxed font-semibold italic">
+                <Text size="xl" className="text-slate-400 max-w-2xl mb-14 leading-relaxed font-semibold">
                   "TailCareVerse isn't just a platform; it's the digital evolution 
                   of the bond between humans and their legends."
                 </Text>
@@ -314,7 +314,7 @@ export default function Landing() {
                   A UNIVERSE BUILT <br/> FOR <span className="text-slate-800">EXCELLENCE.</span>
                 </Title>
               </div>
-              <Text className="text-slate-500 font-bold max-w-sm text-lg italic">
+              <Text className="text-slate-500 font-bold max-w-sm text-lg">
                 Every feature is meticulously designed to simplify care and maximize joy.
               </Text>
             </div>
@@ -359,7 +359,7 @@ export default function Landing() {
             <FadeInWhenVisible direction="left" delay={0.3}>
               <Badge className="bg-blue-500/10 text-blue-400 border-none px-4 py-2 mb-8 uppercase tracking-widest">The Shop</Badge>
               <Title className="text-5xl md:text-7xl font-black mb-10 leading-tight tracking-tighter">
-                THE FINEST <br/> <span className="text-blue-500 uppercase italic">COLLECTION.</span>
+                THE FINEST <br/> <span className="text-blue-500 uppercase">COLLECTION.</span>
               </Title>
               <Text size="xl" className="text-slate-400 mb-12 font-medium leading-relaxed">
                 We believe that the tools of care should be as beautiful as the pets they serve. 
@@ -400,7 +400,7 @@ export default function Landing() {
               <div>
                 <Badge className="bg-emerald-500/20 text-emerald-400 border-none px-6 py-3 mb-10 text-xs font-black tracking-[0.2em]">INTEL SYSTEM</Badge>
                 <Title className="text-5xl md:text-7xl font-black mb-10 leading-none tracking-tighter uppercase">
-                  INTELLIGENCE <br/> <span className="text-emerald-500 italic">ON DEMAND.</span>
+                  INTELLIGENCE <br/> <span className="text-emerald-500">ON DEMAND.</span>
                 </Title>
                 <Text size="xl" className="text-slate-400 mb-12 font-medium leading-relaxed">
                   TailCare AI isn't just a bot. It's a hyper-intelligent companion trained 
@@ -453,7 +453,7 @@ export default function Landing() {
             <Title className="text-6xl md:text-9xl font-black mb-12 tracking-tighter leading-none uppercase">
               BEYOND <br/> <span className="text-emerald-500">BOUNDARIES.</span>
             </Title>
-            <Text size="xl" className="text-slate-400 mb-16 font-bold italic">
+            <Text size="xl" className="text-slate-400 mb-16 font-bold">
               "The life your pet deserves is just one click away. Join the elite network of modern pet parents."
             </Text>
             <motion.div
@@ -482,9 +482,9 @@ export default function Landing() {
                 <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center">
                   <img src="/favicon.png" alt="Logo" className="h-7 w-auto" />
                 </div>
-                <span className="text-3xl font-black tracking-tighter text-white uppercase italic">TailCareVerse</span>
+                <span className="text-3xl font-black tracking-tighter text-white uppercase">TailCareVerse</span>
               </Link>
-              <Text className="text-slate-500 text-lg max-w-sm font-semibold mb-10 italic">
+              <Text className="text-slate-500 text-lg max-w-sm font-semibold mb-10">
                 Redefining the standard of care for the legends in our lives. 
                 Built for the next generation of pet parents.
               </Text>

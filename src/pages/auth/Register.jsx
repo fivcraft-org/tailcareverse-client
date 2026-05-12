@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { registerUser } from "../../api/api-auth";
-import { getUserRoles } from "../../api/api-user";
+
 import { useNavigate, Link } from "react-router-dom";
-import { isPlatformRole, ROLE_LABELS } from "../../utils/roles";
+import { PLATFORM_ROLES, ROLE_LABELS } from "../../utils/roles";
 import {
   TextInput,
   PasswordInput,
@@ -36,28 +36,11 @@ const Register = () => {
     role: "user",
   });
 
-  const [roles, setRoles] = useState([]);
+  const roles = PLATFORM_ROLES.map((r) => ({
+    value: r,
+    label: ROLE_LABELS[r] || r.toUpperCase(),
+  }));
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchRoles = async () => {
-      try {
-        const res = await getUserRoles();
-        if (res.success) {
-          const platformRoles = Object.values(res.data)
-            .filter(isPlatformRole)
-            .map((r) => ({
-              value: r,
-              label: ROLE_LABELS[r] || r.toUpperCase(),
-            }));
-          setRoles(platformRoles);
-        }
-      } catch (err) {
-        console.error("Failed to fetch roles", err);
-      }
-    };
-    fetchRoles();
-  }, []);
 
   const handleChange = (field, value) => {
     setForm({ ...form, [field]: value });
@@ -97,17 +80,17 @@ const Register = () => {
     <div className="h-screen w-full bg-[#020202] flex overflow-hidden font-['Urbanist']">
       {/* Left Panel: Impressive Calm Cinematic Image */}
       <div className="hidden lg:flex lg:w-[50%] relative h-full overflow-hidden">
-        <motion.img 
+        <motion.img
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2.5, ease: "easeOut" }}
-          src={authHero} 
-          alt="TailCareVerse Serenity" 
+          src={authHero}
+          alt="TailCareVerse Serenity"
           className="absolute inset-0 w-full h-full object-cover brightness-100"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-white/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#020202]" />
-        
+
         <div className="relative z-10 p-24 flex flex-col justify-between h-full w-full">
           <motion.div
             initial={{ y: -20, opacity: 0 }}
@@ -122,7 +105,7 @@ const Register = () => {
                 <img src={logo} alt="Logo" className="h-9 w-auto brightness-0 invert" />
               </motion.div>
               <div className="flex flex-col leading-none">
-                <span className="text-3xl font-black tracking-tighter text-black uppercase italic">
+                <span className="text-3xl font-black tracking-tighter text-black uppercase">
                   TailCare<span className="text-emerald-600">Verse</span>
                 </span>
                 <span className="text-xs font-black uppercase tracking-[0.4em] text-black/60">Premium Ecosystem</span>
@@ -136,11 +119,11 @@ const Register = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.8, duration: 1 }}
             >
-              <Title className="text-8xl md:text-9xl font-semibold text-white leading-[0.8] tracking-tighter mb-10 uppercase italic drop-shadow-2xl">
-                BEYOND <br/> <span className="text-white not-italic">BOUNDARIES.</span>
+              <Title className="text-8xl md:text-9xl font-semibold text-white leading-[0.8] tracking-tighter mb-10 uppercase  drop-shadow-2xl">
+                BEYOND <br /> <span className="text-emerald-600">BOUNDARIES.</span>
               </Title>
             </motion.div>
-            
+
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -148,13 +131,13 @@ const Register = () => {
               className="flex items-center gap-8"
             >
               <div className="h-20 w-1 bg-white rounded-full shadow-lg" />
-              <Text className="text-white text-2xl font-semibold leading-relaxed max-w-lg italic drop-shadow-xl">
+              <p className="text-white text-xl font-semibold leading-relaxed max-w-lg  drop-shadow-xl">
                 "Join the world's most sophisticated and peaceful community for modern pet parents."
-              </Text>
+              </p>
             </motion.div>
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.6 }}
             transition={{ delay: 2, duration: 1 }}
@@ -174,25 +157,25 @@ const Register = () => {
 
       {/* Right Panel: High-Visibility Form */}
       <div className="flex-1 h-full relative flex flex-col items-center justify-center p-6 md:p-10 lg:p-14 bg-[#020202] overflow-y-auto">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="w-full max-w-2xl"
         >
           <div className="mb-6">
-            <motion.div 
+            <motion.div
               initial={{ width: 0 }}
               animate={{ width: 48 }}
               transition={{ delay: 0.5, duration: 1 }}
-              className="h-[2px] bg-emerald-500 mb-5" 
+              className="h-[2px] bg-emerald-500 mb-5"
             />
             <Title className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none mb-3">
-              CREATE <span className="text-emerald-500 italic">ACCOUNT.</span>
+              CREATE <span className="text-emerald-500 ">ACCOUNT.</span>
             </Title>
-            <Text className="text-white/50 font-semibold text-sm italic">
+            <p className="text-white/50 font-semibold text-sm ">
               Enroll in the premium digital ecosystem.
-            </Text>
+            </p>
           </div>
 
           <div className="glass-dark p-8 lg:p-10 rounded-[2.5rem] border border-white/10 relative bg-white/[0.02] shadow-2xl">
@@ -200,7 +183,7 @@ const Register = () => {
               <div className="grid md:grid-cols-2 gap-x-8 gap-y-5">
                 <Stack gap="sm">
                   <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }}>
-                    <Text className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-400 mb-2 ml-1">Full Name</Text>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-400 mb-2 ml-1">Full Name</p>
                     <TextInput
                       placeholder="Full name"
                       leftSection={<FiUser size={15} className="text-emerald-500" />}
@@ -215,7 +198,7 @@ const Register = () => {
                   </motion.div>
 
                   <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 }}>
-                    <Text className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-400 mb-2 ml-1">Email</Text>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-400 mb-2 ml-1">Email</p>
                     <TextInput
                       placeholder="Email address"
                       leftSection={<FiMail size={15} className="text-emerald-500" />}
@@ -230,7 +213,7 @@ const Register = () => {
                   </motion.div>
 
                   <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.8 }}>
-                    <Text className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-400 mb-2 ml-1">Username</Text>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-400 mb-2 ml-1">Username</p>
                     <TextInput
                       placeholder="Username"
                       leftSection={<FiZap size={15} className="text-emerald-500" />}
@@ -247,7 +230,7 @@ const Register = () => {
 
                 <Stack gap="sm">
                   <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }}>
-                    <Text className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-400 mb-2 ml-1">Account Type</Text>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-400 mb-2 ml-1">Account Type</p>
                     <Select
                       placeholder="Select role"
                       leftSection={<FiLayers size={15} className="text-emerald-500" />}
@@ -263,7 +246,7 @@ const Register = () => {
                   </motion.div>
 
                   <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 }}>
-                    <Text className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-400 mb-2 ml-1">Password</Text>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-400 mb-2 ml-1">Password</p>
                     <PasswordInput
                       placeholder="Password"
                       leftSection={<FiLock size={15} className="text-emerald-500" />}
@@ -279,7 +262,7 @@ const Register = () => {
                   </motion.div>
 
                   <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.8 }}>
-                    <Text className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-400 mb-2 ml-1">Confirm Password</Text>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-400 mb-2 ml-1">Confirm Password</p>
                     <PasswordInput
                       placeholder="Repeat password"
                       leftSection={<FiShield size={15} className="text-emerald-500" />}
@@ -296,7 +279,7 @@ const Register = () => {
                 </Stack>
               </div>
 
-              <motion.div 
+              <motion.div
                 className="mt-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -313,18 +296,18 @@ const Register = () => {
                 </Button>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 className="mt-10 text-center"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
               >
-                <Text className="text-white/40 font-bold italic text-sm">
+                <p className="text-white/40 font-bold  text-sm">
                   Already a member of the Verse?{" "}
-                  <Link to="/login" className="text-emerald-500 hover:text-emerald-400 transition-colors no-underline font-black not-italic uppercase tracking-[0.2em]">
+                  <Link to="/login" className="text-emerald-500 hover:text-emerald-400 transition-colors no-underline font-black uppercase tracking-[0.2em]">
                     LOGIN ACCESS
                   </Link>
-                </Text>
+                </p>
               </motion.div>
             </form>
           </div>
