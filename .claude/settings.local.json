@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Users/sakth/desktop/projects/petcareverse-client/src -type f \\\\\\(-name *.ts -o -name *.tsx -o -name *.js -o -name *.jsx \\\\\\))",
+      "Bash(find /c/Users/sakth/desktop/projects/petcareverse-client/src -type f -name *constant* -o -name *config*)",
+      "Bash(wc -l \"/c/Users/sakth/desktop/projects/petcareverse-server/controllers\"/*.js)"
+    ]
+  }
+}

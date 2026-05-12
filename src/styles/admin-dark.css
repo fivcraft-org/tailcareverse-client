@@ -1,0 +1,276 @@
+/* admin-dark.css */
+
+:root.dark, html[data-theme="dark"], .dark {
+  --ad-bg: #09090b;
+  --ad-surface: #18181b;
+  --ad-surface2: #27272a;
+  --ad-surface3: #3f3f46;
+  --ad-border: rgba(255, 255, 255, 0.1);
+  --ad-border2: rgba(255, 255, 255, 0.2);
+  --ad-text: #fafafa;
+  --ad-text-muted: #a1a1aa;
+  --ad-text-faint: #52525b;
+  --ad-input-bg: rgba(255, 255, 255, 0.03);
+}
+
+.dark .ad-sidebar {
+  background: var(--ad-surface);
+  border-right: 1px solid var(--ad-border);
+}
+
+.dark .ad-topbar {
+  background: var(--ad-surface);
+  border-bottom: 1px solid var(--ad-border);
+}
+
+.dark .ad-main {
+  background: var(--ad-bg);
+}
+
+.dark .ad-tab {
+  background: transparent;
+  color: var(--ad-text-muted);
+}
+
+.dark .ad-tab-active {
+  background: var(--ad-surface2);
+  color: #36b38f;
+}
+
+.dark .ad-card, .dark .ad-table-wrap, .dark .ad-module-card {
+  background: var(--ad-surface);
+  border-color: var(--ad-border);
+}
+
+.dark .ad-modal {
+  background: var(--ad-surface);
+  border: 1px solid var(--ad-border);
+}
+
+.dark .ad-modal-header {
+  border-bottom-color: var(--ad-border);
+}
+
+.dark .ad-table thead th {
+  background: var(--ad-surface2);
+  color: var(--ad-text);
+  border-bottom: 1px solid var(--ad-border);
+}
+
+.dark .ad-table tbody tr {
+  border-bottom: 1px solid var(--ad-border);
+}
+
+.dark .ad-table tbody tr:hover {
+  background: var(--ad-surface2);
+}
+
+.dark input, .dark select, .dark textarea {
+  background: var(--ad-input-bg);
+  border-color: var(--ad-border);
+  color: var(--ad-text);
+}
+
+.dark .ad-nav-item:hover {
+  background: var(--ad-surface2);
+}
+
+.dark .ad-nav-active {
+  background: var(--ad-surface2);
+}
+
+.dark .ad-topbar-profile-trigger:hover {
+  background: var(--ad-surface2);
+}
+
+.dark .ad-profile-dropdown {
+  background: var(--ad-surface);
+  border: 1px solid var(--ad-border);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.dark .ad-dropdown-header {
+  background: var(--ad-surface2);
+}
+
+.dark .ad-dropdown-divider {
+  background: var(--ad-border);
+}
+
+.dark .ad-dropdown-header .ad-dropdown-name {
+  color: var(--ad-text);
+}
+
+.dark .ad-dropdown-header .ad-dropdown-email {
+  color: var(--ad-text-muted);
+}
+
+.dark .ad-dropdown-item {
+  color: var(--ad-text-muted);
+}
+
+.dark .ad-dropdown-item:hover {
+  background: var(--ad-surface2);
+  color: var(--ad-text);
+}
+
+.dark .ad-dropdown-item.logout {
+  color: #ef4444;
+}
+
+.dark .ad-dropdown-item.logout:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.dark .ad-table-empty {
+  color: var(--ad-text-faint);
+}
+
+.dark .ad-sidebar-logo .ad-logo-text {
+  color: var(--ad-text);
+}
+
+.dark .ad-nav-label {
+  color: var(--ad-text-faint);
+}
+
+/* Premium Form Styles */
+.premium-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ad-form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ad-form-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--ad-text-faint);
+  letter-spacing: 0.1em;
+  margin-left: 4px;
+}
+
+.ad-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ad-input-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--ad-text-faint);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.ad-input-group:focus-within .ad-input-icon {
+  color: #36b38f;
+}
+
+.ad-input-group input, 
+.ad-input-group select {
+  padding-left: 42px !important;
+  height: 48px !important;
+  border-radius: 12px !important;
+  font-weight: 500 !important;
+}
+
+.ad-error-msg {
+  background: rgba(220, 38, 38, 0.1);
+  color: #dc2626;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+/* ── Search Input Dark Mode ── */
+.dark .ad-search-input {
+  background: var(--ad-surface2) !important;
+  border-color: var(--ad-border) !important;
+  color: var(--ad-text) !important;
+}
+
+.dark .ad-search-input:focus {
+  border-color: #36b38f !important;
+  box-shadow: 0 0 0 3px rgba(54, 179, 143, 0.15) !important;
+}
+
+.dark .ad-search-input::placeholder {
+  color: var(--ad-text-faint) !important;
+}
+
+/* ── UserProfileModal Dark Mode Overrides ── */
+.dark .ad-user-detail-view .ad-detail-item {
+  background: var(--ad-surface2) !important;
+  border-color: var(--ad-border) !important;
+}
+
+.dark .ad-user-detail-view .ad-detail-item-icon {
+  background: var(--ad-surface3) !important;
+}
+
+.dark .ad-user-detail-view .ad-detail-item-label {
+  color: var(--ad-text-faint) !important;
+}
+
+.dark .ad-user-detail-view .ad-detail-item-value {
+  color: var(--ad-text) !important;
+}
+
+.dark .ad-user-detail-view .ad-user-fallback-box {
+  background: var(--ad-surface2) !important;
+  border-color: var(--ad-border) !important;
+  color: var(--ad-text-muted) !important;
+}
+
+.dark .ad-user-detail-view .ad-user-avatar-wrap {
+  background: var(--ad-surface2) !important;
+  border-color: var(--ad-border) !important;
+}
+
+.dark .ad-user-detail-view .ad-user-name-primary {
+  color: var(--ad-text) !important;
+}
+
+.dark .ad-user-detail-view .ad-user-bio {
+  color: var(--ad-text-muted) !important;
+}
+
+.dark .ad-user-detail-view .ad-prof-section-title {
+  color: var(--ad-text) !important;
+}
+
+/* ── Search Bar Dark Mode (UsersModule alias) ── */
+.dark .ad-search-bar .ad-search-input {
+  background: var(--ad-surface2) !important;
+  border-color: var(--ad-border) !important;
+  color: var(--ad-text) !important;
+}
+
+.dark .ad-search-bar:focus-within .ad-search-icon {
+  color: #36b38f !important;
+}
+
+/* ── Avatar Cell Dark Mode ── */
+.dark .ad-avatar-cell {
+  background: var(--ad-surface3) !important;
+  border-color: var(--ad-border2) !important;
+  color: var(--ad-text-muted) !important;
+}
+
+/* ── Module Card Dark Mode ── */
+.dark .ad-module-card {
+  background: var(--ad-surface) !important;
+  border-color: var(--ad-border) !important;
+}
