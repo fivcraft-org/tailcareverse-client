@@ -90,7 +90,7 @@ const Login = () => {
                 <span className="text-3xl font-black tracking-tighter text-black uppercase italic">
                   TailCare<span className="text-emerald-600">Verse</span>
                 </span>
-                <span className="text-xs font-black uppercase tracking-[0.4em] text-black/60">Premium Ecosystem</span>
+                <span className="text-xs font-black uppercase tracking-[0.4em] text-dark/60">Pet Social App</span>
               </div>
             </Link>
           </motion.div>
@@ -101,8 +101,8 @@ const Login = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.8, duration: 1 }}
             >
-              <Title className="text-8xl md:text-9xl font-semibold text-white leading-[0.8] tracking-tighter mb-10 uppercase italic drop-shadow-2xl">
-                PEACE <br/> OF <span className="text-white not-italic">MIND.</span>
+              <Title className="text-8xl md:text-9xl font-semibold text-black leading-[0.8] tracking-tighter mb-10 uppercase italic drop-shadow-2xl">
+                PEACE <br/> OF <span className="text-emerald-600 not-italic">MIND.</span>
               </Title>
             </motion.div>
             
@@ -112,10 +112,10 @@ const Login = () => {
               transition={{ delay: 1.2, duration: 1 }}
               className="flex items-center gap-8"
             >
-              <div className="h-20 w-1 bg-white rounded-full shadow-lg" />
-              <Text className="text-white text-2xl font-semibold leading-relaxed max-w-lg italic drop-shadow-xl">
+              <div className="h-20 w-1 bg-emerald-500 rounded-full shadow-lg" />
+              <p style={{ color: 'white', fontSize: '1.4rem', fontWeight: 600, lineHeight: 1.6, fontStyle: 'italic', maxWidth: '28rem', textShadow: '0 4px 24px rgba(0,0,0,0.4)', margin: 0 }}>
                 "Experience the world's most serene and advanced digital home for you and your legends."
-              </Text>
+              </p>
             </motion.div>
           </div>
 
@@ -155,9 +155,9 @@ const Login = () => {
             <Title className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none mb-3">
               WELCOME <span className="text-emerald-500 italic">BACK.</span>
             </Title>
-            <Text className="text-white/50 font-semibold text-sm italic">
+            <p className="text-white/50 font-semibold text-sm italic">
               Access your personalized Verse dashboard.
-            </Text>
+            </p>
           </div>
 
           <div className="glass-dark p-8 md:p-10 rounded-[2rem] border border-white/10 relative bg-white/[0.02] shadow-2xl">
@@ -168,7 +168,7 @@ const Login = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <Text className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400 mb-2 ml-1">Email</Text>
+                  <p className="text-[14px] font-bold uppercase tracking-[0.2em] text-emerald-400 mb-2 ml-1">Email</p>
                   <TextInput
                     placeholder="Email address"
                     leftSection={<FiMail size={16} className="text-emerald-500" />}
@@ -187,7 +187,7 @@ const Login = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.7 }}
                 >
-                  <Text className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400 mb-2 ml-1">Password</Text>
+                  <p className="text-[14px] font-bold uppercase tracking-[0.2em] text-emerald-400 mb-2 ml-1">Password</p>
                   <PasswordInput
                     placeholder="Password"
                     leftSection={<FiLock size={16} className="text-emerald-500" />}
@@ -220,7 +220,7 @@ const Login = () => {
                 </motion.div>
 
                 <motion.div 
-                  className="flex flex-col gap-6 text-center mt-8"
+                  className="flex flex-col gap-6 text-center mt-3"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.2 }}
@@ -231,12 +231,12 @@ const Login = () => {
                   
                   <Divider label="OR" labelPosition="center" classNames={{ label: "bg-transparent text-white/20 font-black text-[10px]" }} className="border-white/5" />
 
-                  <Text className="text-white/40 font-bold italic text-sm">
+                  <p className="text-white/40 font-bold italic text-sm">
                     New to the Universe?{" "}
                     <Link to="/register" className="text-emerald-500 hover:text-emerald-400 transition-colors no-underline font-black not-italic uppercase tracking-[0.2em]">
                       JOIN THE FAMILY
                     </Link>
-                  </Text>
+                  </p>
                 </motion.div>
               </Stack>
             </form>
