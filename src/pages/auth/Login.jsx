@@ -215,7 +215,7 @@ const Login = () => {
                     size="lg"
                     className="bg-emerald-500 hover:bg-emerald-400 h-14 rounded-xl font-black text-xs uppercase tracking-[0.3em] shadow-[0_10px_30px_rgba(16,185,129,0.3)] border-none transition-all duration-500 group"
                   >
-                    Login <FiZap className="ml-2 group-hover:scale-125 transition-transform" />
+                    Login
                   </Button>
                 </motion.div>
 

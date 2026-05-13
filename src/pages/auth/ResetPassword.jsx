@@ -64,7 +64,7 @@ const ResetPassword = () => {
                 <img src={logo} alt="Logo" className="h-8 w-auto brightness-0 invert" />
               </motion.div>
               <div className="flex flex-col leading-none">
-                <span className="text-2xl font-black tracking-tighter text-black uppercase italic">
+                <span className="text-2xl font-black tracking-tighter text-black uppercase">
                   TailCare<span className="text-emerald-600">Verse</span>
                 </span>
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/60">Premium Ecosystem</span>
@@ -74,26 +74,26 @@ const ResetPassword = () => {
 
           <div>
             <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.8, duration: 1 }}>
-              <Title className="text-7xl md:text-8xl font-semibold text-white leading-[0.85] tracking-tighter mb-8 uppercase italic drop-shadow-2xl">
-                CREATE <br/> NEW <br/> <span className="text-emerald-400 not-italic">PASSWORD.</span>
+              <Title className="text-7xl md:text-8xl font-semibold text-black leading-[0.85] tracking-tighter mb-8 uppercase  drop-shadow-2xl">
+                CREATE <br/> NEW <br/> <span className="text-emerald-400">PASSWORD.</span>
               </Title>
             </motion.div>
             <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 1.2, duration: 1 }} className="flex items-center gap-6">
-              <div className="h-16 w-1 bg-white rounded-full" />
-              <Text className="text-white text-lg font-semibold leading-relaxed max-w-sm italic drop-shadow-xl">
+              <div className="h-16 w-1 bg-emerald-500 rounded-full" />
+              <p className="text-white text-xl font-semibold leading-relaxed max-w-sm  drop-shadow-xl">
                 "Choose a strong new password to protect your Verse account going forward."
-              </Text>
+              </p>
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.5 }} transition={{ delay: 2, duration: 1 }} className="flex gap-8">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.5 }} transition={{ delay: 2, duration: 1 }} className="flex justify-between lg:w-3/4">
             <div className="flex items-center gap-2">
-              <FiShield className="text-black" size={12} />
-              <span className="text-[10px] font-black tracking-[0.4em] text-black uppercase">End-to-end</span>
+              <FiShield className="text-white" size={12} />
+              <span className="text-[10px] font-black tracking-[0.4em] text-white uppercase">End-to-end</span>
             </div>
             <div className="flex items-center gap-2">
-              <FiLock className="text-black" size={12} />
-              <span className="text-[10px] font-black tracking-[0.4em] text-black uppercase">Encrypted</span>
+              <FiLock className="text-white" size={12} />
+              <span className="text-[10px] font-black tracking-[0.4em] text-white uppercase">Encrypted</span>
             </div>
           </motion.div>
         </div>
@@ -110,18 +110,18 @@ const ResetPassword = () => {
           <div className="mb-8">
             <motion.div initial={{ width: 0 }} animate={{ width: 40 }} transition={{ delay: 0.5, duration: 1 }} className="h-[2px] bg-emerald-500 mb-5" />
             <Title className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none mb-3">
-              RESET <span className="text-emerald-500 italic">PASSWORD.</span>
+              RESET <span className="text-emerald-500 ">PASSWORD.</span>
             </Title>
-            <Text className="text-white/50 font-semibold text-sm italic">
+            <p className="text-white/50 font-semibold text-sm ">
               Set a new strong password for your account.
-            </Text>
+            </p>
           </div>
 
           <div className="glass-dark p-8 md:p-10 rounded-[2rem] border border-white/10 bg-white/[0.02] shadow-2xl">
             <form onSubmit={handleSubmit}>
               <Stack gap="lg">
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }}>
-                  <Text className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400 mb-2 ml-1">New Password</Text>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400 mb-2 ml-1">New Password</p>
                   <PasswordInput
                     placeholder="New password"
                     leftSection={<FiLock size={16} className="text-emerald-500" />}
@@ -137,7 +137,7 @@ const ResetPassword = () => {
                 </motion.div>
 
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 }}>
-                  <Text className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400 mb-2 ml-1">Confirm Password</Text>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400 mb-2 ml-1">Confirm Password</p>
                   <PasswordInput
                     placeholder="Repeat new password"
                     leftSection={<FiShield size={16} className="text-emerald-500" />}
@@ -160,7 +160,7 @@ const ResetPassword = () => {
                     size="lg"
                     className="bg-emerald-500 hover:bg-emerald-400 h-14 rounded-xl font-black text-xs uppercase tracking-[0.3em] shadow-[0_10px_30px_rgba(16,185,129,0.3)] border-none transition-all duration-500 group"
                   >
-                    Update Password <FiZap className="ml-2 group-hover:scale-125 transition-transform" />
+                    Update Password
                   </Button>
                 </motion.div>
               </Stack>

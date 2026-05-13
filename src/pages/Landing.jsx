@@ -15,6 +15,7 @@ import {
   Drawer,
   Box,
   Divider,
+  Tooltip,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import {
@@ -114,6 +115,33 @@ const FadeInWhenVisible = ({ children, delay = 0, direction = "up" }) => {
   );
 };
 
+const MagneticElement = ({ children, strength = 0.3 }) => {
+  const ref = useRef(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    const { left, top, width, height } = ref.current.getBoundingClientRect();
+    const x = clientX - (left + width / 2);
+    const y = clientY - (top + height / 2);
+    setPosition({ x: x * strength, y: y * strength });
+  };
+
+  const reset = () => setPosition({ x: 0, y: 0 });
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={reset}
+      animate={{ x: position.x, y: position.y }}
+      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 export default function Landing() {
   const { settings } = useSettings();
   const [opened, { toggle, close }] = useDisclosure(false);
@@ -131,11 +159,53 @@ export default function Landing() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 500], [0, 150]);
+  const blob1Y = useTransform(scrollY, [0, 1000], [0, 300]);
+  const blob2Y = useTransform(scrollY, [0, 1000], [0, -200]);
+  const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.21, 0.47, 0.32, 0.98],
+      },
+    },
+  };
+
+  const titleWordVariants = {
+    hidden: { y: 100, opacity: 0 },
+    visible: (i) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: 0.5 + i * 0.1,
+        duration: 1,
+        ease: [0.21, 0.47, 0.32, 0.98],
+      },
+    }),
   };
 
   return (
@@ -168,12 +238,24 @@ export default function Landing() {
             </div>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-12">
-            <div className="flex gap-12 text-[11px] font-black uppercase tracking-[0.25em] text-slate-500">
-              <button onClick={() => scrollToSection('features')} className="hover:text-emerald-400 transition-all duration-300 hover:tracking-[0.35em] cursor-pointer">Features</button>
-              <Link to="/ai-assistant" className="hover:text-emerald-400 transition-all duration-300 hover:tracking-[0.35em]">AI System</Link>
-              <Link to="/marketplace" className="hover:text-emerald-400 transition-all duration-300 hover:tracking-[0.35em]">Market</Link>
-              <Link to="/explore" className="hover:text-emerald-400 transition-all duration-300 hover:tracking-[0.35em]">Community</Link>
+            <div className="hidden lg:flex items-center gap-12">
+            <div className="flex gap-12 text-[11px] font-black uppercase tracking-[0.3em] text-slate-500">
+              <button onClick={() => scrollToSection('features')} className="relative group hover:text-emerald-400 transition-all duration-300 cursor-pointer bg-transparent border-none p-0">
+                FEATURES
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-emerald-500 transition-all duration-500 group-hover:w-full" />
+              </button>
+              <Link to="/ai-assistant" className="relative group hover:text-emerald-400 transition-all duration-300">
+                AI SYSTEM
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-emerald-500 transition-all duration-500 group-hover:w-full" />
+              </Link>
+              <Link to="/marketplace" className="relative group hover:text-emerald-400 transition-all duration-300">
+                MARKET
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-emerald-500 transition-all duration-500 group-hover:w-full" />
+              </Link>
+              <Link to="/explore" className="relative group hover:text-emerald-400 transition-all duration-300">
+                COMMUNITY
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-emerald-500 transition-all duration-500 group-hover:w-full" />
+              </Link>
             </div>
             
             <Divider orientation="vertical" className="h-6 border-white/10" />
@@ -208,8 +290,14 @@ export default function Landing() {
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-emerald-500/10 rounded-full blur-[140px] animate-blob" />
-          <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-blue-500/10 rounded-full blur-[140px] animate-blob [animation-delay:2s]" />
+          <motion.div 
+            style={{ y: blob1Y }}
+            className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-emerald-500/10 rounded-full blur-[140px] animate-blob" 
+          />
+          <motion.div 
+            style={{ y: blob2Y }}
+            className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-blue-500/10 rounded-full blur-[140px] animate-blob [animation-delay:2s]" 
+          />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[40%] bg-white/5 rounded-full blur-[120px] animate-pulse-slow" />
         </div>
 
@@ -227,11 +315,34 @@ export default function Landing() {
                   <Text size="xs" className="text-slate-500 font-black uppercase tracking-[0.2em]">The Future of Care</Text>
                 </div>
                 
-                <Title className="text-7xl md:text-9xl font-black leading-[0.9] mb-10 tracking-tighter">
-                  ELEVATING <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 uppercase">PET LIFE</span> <br/>
-                  <span className="text-slate-800">BEYOND.</span>
-                </Title>
+                <motion.div
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <motion.div variants={itemVariants}>
+                    <Title className="text-7xl md:text-9xl font-black leading-[0.9] mb-10 tracking-tighter">
+                      {["ELEVATING", "PET", "LIFE", "BEYOND."].map((word, i) => (
+                        <motion.span
+                          key={i}
+                          custom={i}
+                          variants={titleWordVariants}
+                          className="inline-block mr-4 last:mr-0"
+                        >
+                          {word === "PET" || word === "LIFE" ? (
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">
+                              {word}
+                            </span>
+                          ) : (
+                            word
+                          )}
+                          {i === 0 && <br />}
+                          {i === 2 && <br />}
+                        </motion.span>
+                      ))}
+                    </Title>
+                  </motion.div>
+                </motion.div>
                 
                 <Text size="xl" className="text-slate-400 max-w-2xl mb-14 leading-relaxed font-semibold">
                   "TailCareVerse isn't just a platform; it's the digital evolution 
@@ -239,16 +350,16 @@ export default function Landing() {
                 </Text>
                 
                 <Group gap="xl">
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <MagneticElement>
                     <Button
                       size="xl"
                       component={Link}
                       to="/register"
-                      className="bg-emerald-500 hover:bg-emerald-400 h-20 px-12 rounded-[2rem] font-black text-xl border-none shadow-[0_20px_50px_rgba(16,185,129,0.3)]"
+                      className="bg-emerald-500 hover:bg-emerald-400 h-20 px-12 rounded-[2rem] font-black text-xl border-none shadow-[0_20px_50px_rgba(16,185,129,0.3)] transition-all duration-300 active:scale-95"
                     >
                       Enter the Verse <FiArrowRight className="ml-3" />
                     </Button>
-                  </motion.div>
+                  </MagneticElement>
                   
                   <div className="flex flex-col gap-2">
                     <div className="flex -space-x-3">
@@ -268,25 +379,33 @@ export default function Landing() {
 
             <div className="lg:col-span-5 relative">
               <FadeInWhenVisible direction="left" delay={0.2}>
-                <div className="relative group">
-                  <div className="absolute -inset-10 bg-emerald-500/10 rounded-[4rem] blur-3xl opacity-50 group-hover:opacity-100 transition duration-1000" />
-                  <div className="relative glass-dark p-4 rounded-[4rem] shadow-2xl animate-float">
-                    <img
-                      src={heroPremium}
-                      alt="Premium Pet Life"
-                      className="rounded-[3.5rem] w-full h-[550px] object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
-                    />
-                    
-                    <motion.div 
-                      className="absolute top-10 -right-10 bg-slate-800/80 glass p-6 rounded-[2rem] shadow-2xl border-white/10"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                    >
-                      <FiActivity className="text-emerald-500 mb-2" size={32} />
-                      <Text fw={900} size="sm" className="text-slate-100 leading-none">REAL-TIME</Text>
-                      <Text size="[10px]" fw={800} className="text-slate-400 uppercase tracking-tighter">Vital Tracking</Text>
-                    </motion.div>
-                  </div>
-                </div>
+                <MagneticElement strength={0.15}>
+                  <motion.div 
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="relative group"
+                    style={{ perspective: 1000 }}
+                  >
+                    <div className="absolute -inset-10 bg-emerald-500/10 rounded-[4rem] blur-3xl opacity-50 group-hover:opacity-100 transition duration-1000" />
+                    <div className="relative glass-dark p-4 rounded-[4rem] shadow-2xl animate-float">
+                      <img
+                        src={heroPremium}
+                        alt="Premium Pet Life"
+                        className="rounded-[3.5rem] w-full h-[550px] object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
+                      />
+                      
+                      <Tooltip label="Monitoring 50k+ active pet biometrics" position="bottom" withArrow radius="md" bg="dark" c="white">
+                        <motion.div 
+                          className="absolute top-10 -right-10 bg-slate-800/80 glass p-6 rounded-[2rem] shadow-2xl border-white/10"
+                          whileHover={{ scale: 1.1, rotate: 5, backgroundColor: "rgba(16, 185, 129, 0.9)" }}
+                        >
+                          <FiActivity className="text-emerald-500 group-hover:text-white mb-2" size={32} />
+                          <Text fw={900} size="sm" className="text-slate-100 leading-none">REAL-TIME</Text>
+                          <Text size="[10px]" fw={800} className="text-slate-400 uppercase tracking-tighter">Vital Tracking</Text>
+                        </motion.div>
+                      </Tooltip>
+                    </div>
+                  </motion.div>
+                </MagneticElement>
               </FadeInWhenVisible>
             </div>
           </div>
@@ -297,7 +416,13 @@ export default function Landing() {
         <Container size="xl">
           <div className="flex items-center gap-20 overflow-hidden opacity-30 grayscale whitespace-nowrap">
             {[...partners, ...partners].map((p, i) => (
-              <span key={i} className="text-2xl font-black uppercase tracking-[0.5em]">{p}</span>
+              <motion.span 
+                key={i} 
+                whileHover={{ scale: 1.2, color: "#10b981", opacity: 1, filter: "grayscale(0)" }}
+                className="text-2xl font-black uppercase tracking-[0.5em] cursor-pointer transition-all duration-300"
+              >
+                {p}
+              </motion.span>
             ))}
           </div>
         </Container>
@@ -320,11 +445,19 @@ export default function Landing() {
             </div>
           </FadeInWhenVisible>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
             {features.slice(0, 3).map((f, i) => (
-              <FeatureCard key={i} feature={f} />
+              <motion.div key={i} variants={itemVariants}>
+                <FeatureCard feature={f} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </Container>
       </section>
 
@@ -339,21 +472,23 @@ export default function Landing() {
         <Container size="xl">
           <div className="grid md:grid-cols-2 gap-24 items-center">
             <FadeInWhenVisible direction="right">
-              <div className="relative group">
-                <div className="absolute -inset-10 bg-blue-500/5 rounded-full blur-[120px]" />
-                <div className="relative glass-dark p-4 rounded-[4rem] rotate-[-2deg] group-hover:rotate-0 transition-transform duration-700">
-                  <img 
-                    src={marketplacePremium} 
-                    alt="Marketplace" 
-                    className="rounded-[3.5rem] w-full h-[600px] object-cover"
-                  />
-                  <div className="absolute top-1/2 -right-12 glass p-8 rounded-[2.5rem] bg-slate-800/80 shadow-2xl">
-                    <FiShoppingBag size={32} className="text-blue-500 mb-4" />
-                    <Text className="text-slate-100 font-black text-2xl uppercase tracking-tighter">CURATED</Text>
-                    <Text className="text-slate-400 font-bold text-sm">Essentials</Text>
+              <MagneticElement strength={0.1}>
+                <div className="relative group">
+                  <div className="absolute -inset-10 bg-blue-500/5 rounded-full blur-[120px]" />
+                  <div className="relative glass-dark p-4 rounded-[4rem] rotate-[-2deg] group-hover:rotate-0 transition-transform duration-700">
+                    <img 
+                      src={marketplacePremium} 
+                      alt="Marketplace" 
+                      className="rounded-[3.5rem] w-full h-[600px] object-cover"
+                    />
+                    <div className="absolute top-1/2 -right-12 glass p-8 rounded-[2.5rem] bg-slate-800/80 shadow-2xl">
+                      <FiShoppingBag size={32} className="text-blue-500 mb-4" />
+                      <Text className="text-slate-100 font-black text-2xl uppercase tracking-tighter">CURATED</Text>
+                      <Text className="text-slate-400 font-bold text-sm">Essentials</Text>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </MagneticElement>
             </FadeInWhenVisible>
 
             <FadeInWhenVisible direction="left" delay={0.3}>
@@ -474,7 +609,7 @@ export default function Landing() {
       </section>
 
       {/* Footer Section */}
-      <footer className="py-30 border-t border-white/5 bg-[#050505] relative overflow-hidden">
+      <footer className="py-14 border-t border-white/5 bg-[#050505] relative overflow-hidden">
         <Container size="xl">
           <div className="grid md:grid-cols-4 gap-20 mb-32">
             <div className="md:col-span-2">
@@ -489,15 +624,21 @@ export default function Landing() {
                 Built for the next generation of pet parents.
               </Text>
               <div className="flex gap-6 mt-3">
-                <motion.div whileHover={{ scale: 1.1, y: -5 }} className="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-white/5 cursor-pointer transition-all">
-                  <RiTwitterXFill size={20} />
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.1, y: -5 }} className="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-white/5 cursor-pointer transition-all">
-                  <FiInstagram size={20} />
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.1, y: -5 }} className="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-white/5 cursor-pointer transition-all">
-                  <FiYoutube size={20} />
-                </motion.div>
+                <Tooltip label="Follow on X" position="top" withArrow radius="md" bg="dark" c="white">
+                  <motion.div whileHover={{ scale: 1.1, y: -5 }} className="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-white/5 cursor-pointer transition-all">
+                    <RiTwitterXFill size={20} />
+                  </motion.div>
+                </Tooltip>
+                <Tooltip label="Follow on Instagram" position="top" withArrow radius="md" bg="dark" c="white">
+                  <motion.div whileHover={{ scale: 1.1, y: -5 }} className="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-white/5 cursor-pointer transition-all">
+                    <FiInstagram size={20} />
+                  </motion.div>
+                </Tooltip>
+                <Tooltip label="Subscribe on YouTube" position="top" withArrow radius="md" bg="dark" c="white">
+                  <motion.div whileHover={{ scale: 1.1, y: -5 }} className="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-white/5 cursor-pointer transition-all">
+                    <FiYoutube size={20} />
+                  </motion.div>
+                </Tooltip>
               </div>
             </div>
             
@@ -610,12 +751,14 @@ function FeatureCard({ feature, isFullWidth = false }) {
 
       <div className={`relative z-10 h-full flex ${isFullWidth ? 'flex-col md:flex-row items-center gap-12' : 'flex-col'} justify-between`}>
         <div className={`space-y-8 ${isFullWidth ? 'flex-1' : ''}`}>
-          <motion.div 
-            whileHover={{ rotate: 12, scale: 1.1 }}
-            className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-emerald-500/20"
-          >
-            {React.cloneElement(feature.icon, { size: 32, className: "text-white" })}
-          </motion.div>
+          <Tooltip label={`Explore ${feature.title}`} position="top" withArrow radius="md" bg="dark" c="white">
+            <motion.div 
+              whileHover={{ rotate: 12, scale: 1.1 }}
+              className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-emerald-500/20"
+            >
+              {React.cloneElement(feature.icon, { size: 32, className: "text-white" })}
+            </motion.div>
+          </Tooltip>
           
           <div>
             <div className="flex items-center gap-3 mb-4">
