@@ -91,24 +91,24 @@ const Register = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-white/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#020202]" />
 
-        <div className="relative z-10 p-24 flex flex-col justify-between h-full w-full">
+        <div className="relative z-10 p-10 flex flex-col justify-between h-full w-full">
           <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            <Link to="/" className="inline-flex items-center gap-6 no-underline group">
+            <Link to="/" className="inline-flex items-center gap-4 no-underline group">
               <motion.div
                 whileHover={{ rotate: 360, scale: 1.1 }}
-                className="w-16 h-16 bg-black rounded-3xl flex items-center justify-center shadow-2xl shadow-black/20"
+                className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center shadow-2xl shadow-black/20"
               >
-                <img src={logo} alt="Logo" className="h-9 w-auto brightness-0 invert" />
+                <img src={logo} alt="Logo" className="h-6 w-auto brightness-0 invert" />
               </motion.div>
               <div className="flex flex-col leading-none">
-                <span className="text-3xl font-black tracking-tighter text-black uppercase">
+                <span className="text-xl font-black tracking-tighter text-black uppercase">
                   TailCare<span className="text-emerald-600">Verse</span>
                 </span>
-                <span className="text-xs font-black uppercase tracking-[0.4em] text-black/60">Premium Ecosystem</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/60">Pet Social App</span>
               </div>
             </Link>
           </motion.div>

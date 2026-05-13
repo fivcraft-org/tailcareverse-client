@@ -47,17 +47,17 @@ const ForgotPassword = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[#020202]/60 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#020202]" />
 
-        <div className="relative z-10 p-16 flex flex-col justify-between h-full w-full">
+        <div className="relative z-10 p-10 flex flex-col justify-between h-full w-full">
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.5, duration: 1 }}>
-            <Link to="/" className="inline-flex items-center gap-5 no-underline group">
-              <motion.div whileHover={{ rotate: 360, scale: 1.1 }} className="w-14 h-14 bg-black rounded-2xl flex items-center justify-center shadow-2xl">
-                <img src={logo} alt="Logo" className="h-8 w-auto brightness-0 invert" />
+            <Link to="/" className="inline-flex items-center gap-4 no-underline group">
+              <motion.div whileHover={{ rotate: 360, scale: 1.1 }} className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center shadow-2xl">
+                <img src={logo} alt="Logo" className="h-6 w-auto brightness-0 invert" />
               </motion.div>
               <div className="flex flex-col leading-none">
-                <span className="text-2xl font-black tracking-tighter text-black uppercase">
+                <span className="text-xl font-black tracking-tighter text-black uppercase">
                   TailCare<span className="text-emerald-600">Verse</span>
                 </span>
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/60">Premium Ecosystem</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/60">Pet Social App</span>
               </div>
             </Link>
           </motion.div>

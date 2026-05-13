@@ -234,28 +234,28 @@ export default function Landing() {
               <span className="text-2xl font-black tracking-tighter text-white uppercase">
                 TailCare<span className="text-emerald-500">Verse</span>
               </span>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">Premium Ecosystem</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">Pet Social App</span>
             </div>
           </Link>
 
             <div className="hidden lg:flex items-center gap-12">
             <div className="flex gap-12 text-[11px] font-black uppercase tracking-[0.3em] text-slate-500">
-              <button onClick={() => scrollToSection('features')} className="relative group hover:text-emerald-400 transition-all duration-300 cursor-pointer bg-transparent border-none p-0">
+              <button onClick={() => scrollToSection('features')} className="relative group hover:text-emerald-400 transition-all duration-300 cursor-pointer bg-transparent border-none p-0 font-black uppercase tracking-[0.3em]">
                 FEATURES
                 <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-emerald-500 transition-all duration-500 group-hover:w-full" />
               </button>
-              <Link to="/ai-assistant" className="relative group hover:text-emerald-400 transition-all duration-300">
-                AI SYSTEM
-                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-emerald-500 transition-all duration-500 group-hover:w-full" />
-              </Link>
-              <Link to="/marketplace" className="relative group hover:text-emerald-400 transition-all duration-300">
-                MARKET
-                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-emerald-500 transition-all duration-500 group-hover:w-full" />
-              </Link>
-              <Link to="/explore" className="relative group hover:text-emerald-400 transition-all duration-300">
+              <button onClick={() => scrollToSection('community')} className="relative group hover:text-emerald-400 transition-all duration-300 cursor-pointer bg-transparent border-none p-0 font-black uppercase tracking-[0.3em]">
                 COMMUNITY
                 <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-emerald-500 transition-all duration-500 group-hover:w-full" />
-              </Link>
+              </button>
+              <button onClick={() => scrollToSection('marketplace')} className="relative group hover:text-emerald-400 transition-all duration-300 cursor-pointer bg-transparent border-none p-0 font-black uppercase tracking-[0.3em]">
+                MARKET
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-emerald-500 transition-all duration-500 group-hover:w-full" />
+              </button>
+              <button onClick={() => scrollToSection('ai-system')} className="relative group hover:text-emerald-400 transition-all duration-300 cursor-pointer bg-transparent border-none p-0 font-black uppercase tracking-[0.3em]">
+                AI SYSTEM
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-emerald-500 transition-all duration-500 group-hover:w-full" />
+              </button>
             </div>
             
             <Divider orientation="vertical" className="h-6 border-white/10" />
@@ -461,14 +461,14 @@ export default function Landing() {
         </Container>
       </section>
 
-      <section className="py-20 relative">
+      <section id="community" className="py-20 relative">
         <Container size="xl">
           <FeatureCard feature={features[3]} isFullWidth />
         </Container>
       </section>
 
       {/* Marketplace Spotlight */}
-      <section className="py-30 relative overflow-hidden">
+      <section id="marketplace" className="py-30 relative overflow-hidden">
         <Container size="xl">
           <div className="grid md:grid-cols-2 gap-24 items-center">
             <FadeInWhenVisible direction="right">
@@ -528,7 +528,7 @@ export default function Landing() {
       </section>
 
       {/* AI Assistant Section */}
-      <section className="py-30 relative">
+      <section id="ai-system" className="py-30 relative">
         <Container size="lg">
           <div className="glass-dark p-12 md:p-24 rounded-[5rem] relative z-10 border border-white/5 overflow-hidden bg-slate-900/20 backdrop-blur-3xl">
             <div className="grid md:grid-cols-2 gap-20 items-center">
@@ -685,9 +685,9 @@ export default function Landing() {
       >
         <Stack gap="xl" mt="xl">
           <button onClick={() => { scrollToSection('features'); close(); }} className="text-5xl font-black text-white hover:text-emerald-500 transition-all text-left bg-transparent border-none p-0 cursor-pointer">Features</button>
-          <Link to="/ai-assistant" onClick={close} className="text-5xl font-black text-white hover:text-emerald-500 transition-all no-underline">AI Assistant</Link>
-          <Link to="/marketplace" onClick={close} className="text-5xl font-black text-white hover:text-emerald-500 transition-all no-underline">Marketplace</Link>
-          <Link to="/explore" onClick={close} className="text-5xl font-black text-white hover:text-emerald-500 transition-all no-underline">Community</Link>
+          <button onClick={() => { scrollToSection('ai-system'); close(); }} className="text-5xl font-black text-white hover:text-emerald-500 transition-all text-left bg-transparent border-none p-0 cursor-pointer">AI Assistant</button>
+          <button onClick={() => { scrollToSection('marketplace'); close(); }} className="text-5xl font-black text-white hover:text-emerald-500 transition-all text-left bg-transparent border-none p-0 cursor-pointer">Marketplace</button>
+          <button onClick={() => { scrollToSection('community'); close(); }} className="text-5xl font-black text-white hover:text-emerald-500 transition-all text-left bg-transparent border-none p-0 cursor-pointer">Community</button>
           <div className="pt-20">
             <Button component={Link} to="/register" onClick={close} fullWidth size="xl" className="bg-emerald-500 rounded-3xl h-20 text-2xl font-black">Join Now</Button>
           </div>
