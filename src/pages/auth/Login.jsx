@@ -41,14 +41,23 @@ const Login = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const data = await loginUser(form);
-      if (data.data?.requireOtp) {
-        notifySuccess(data.data.message);
+      const res = await loginUser(form);
+      const result = res.data;
+
+      if (result.requireOtp) {
+        notifySuccess(result.message || "OTP sent to your email");
         navigate("/verify-otp", { state: { email: form.email, type: "LOGIN" } });
         return;
       }
-      login(data.data);
-      notifySuccess(data.message);
+
+      if (result.requireVerification) {
+        notifySuccess(result.message || "Account verification required. OTP sent.");
+        navigate("/verify-otp", { state: { email: form.email, type: "REGISTER" } });
+        return;
+      }
+
+      login(result);
+      notifySuccess(res.message || "Login successful");
       navigate("/home", { replace: true });
     } catch (err) {
       const message = err.response?.data?.message || "Login failed";

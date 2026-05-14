@@ -59,6 +59,7 @@ const InitialLoader = () => {
               src={settings.general.logoUrl || Icon}
               alt={`${settings.general.platformName || "TailCareVerse"} Icon`}
               className="w-36 h-36 md:w-44 md:h-44 object-cover"
+              style={{ filter: "invert(1)" }}
               animate={{
                 scale: [1, 1.04, 1],
               }}

@@ -65,8 +65,8 @@ const Register = () => {
         firstName,
         lastName,
       };
-      await registerUser(registrationData);
-      notifySuccess("Registration successful! Please verify your email.");
+      const res = await registerUser(registrationData);
+      notifySuccess(res.data?.message || "Registration successful! Please verify your email.");
       navigate("/verify-otp", { state: { email: form.email, type: "REGISTER" } });
     } catch (err) {
       const message = err.response?.data?.message || "Registration failed";
