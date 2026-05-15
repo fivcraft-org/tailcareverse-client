@@ -750,7 +750,7 @@ export default function EditProfile() {
                   Resubmission Feedback
                 </h4>
               </div>
-              <p className="text-sm text-gray-700 dark:text-gray-200 italic pl-11">
+              <p className="text-sm text-gray-700 dark:text-gray-200 pl-11">
                 "{user.reviewNotes}"
               </p>
             </div>

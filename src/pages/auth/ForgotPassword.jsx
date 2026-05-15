@@ -47,43 +47,43 @@ const ForgotPassword = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[#020202]/60 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#020202]" />
 
-        <div className="relative z-10 p-16 flex flex-col justify-between h-full w-full">
+        <div className="relative z-10 p-10 flex flex-col justify-between h-full w-full">
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.5, duration: 1 }}>
-            <Link to="/" className="inline-flex items-center gap-5 no-underline group">
-              <motion.div whileHover={{ rotate: 360, scale: 1.1 }} className="w-14 h-14 bg-black rounded-2xl flex items-center justify-center shadow-2xl">
-                <img src={logo} alt="Logo" className="h-8 w-auto brightness-0 invert" />
+            <Link to="/" className="inline-flex items-center gap-4 no-underline group">
+              <motion.div whileHover={{ rotate: 360, scale: 1.1 }} className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center shadow-2xl">
+                <img src={logo} alt="Logo" className="h-6 w-auto brightness-0 invert" />
               </motion.div>
               <div className="flex flex-col leading-none">
-                <span className="text-2xl font-black tracking-tighter text-black uppercase italic">
+                <span className="text-xl font-black tracking-tighter text-black uppercase">
                   TailCare<span className="text-emerald-600">Verse</span>
                 </span>
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/60">Premium Ecosystem</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/60">Pet Social App</span>
               </div>
             </Link>
           </motion.div>
 
           <div>
             <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.8, duration: 1 }}>
-              <Title className="text-7xl md:text-8xl font-semibold text-white leading-[0.85] tracking-tighter mb-8 uppercase italic drop-shadow-2xl">
-                RECOVER <br/> YOUR <br/> <span className="text-emerald-400 not-italic">ACCOUNT.</span>
+              <Title className="text-7xl md:text-8xl font-semibold text-black leading-[0.85] tracking-tighter mb-8 uppercase drop-shadow-2xl">
+                RECOVER <br/> YOUR <br/> <span className="text-emerald-500">ACCOUNT.</span>
               </Title>
             </motion.div>
             <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 1.2, duration: 1 }} className="flex items-center gap-6">
-              <div className="h-16 w-1 bg-white rounded-full" />
-              <Text className="text-white text-lg font-semibold leading-relaxed max-w-sm italic drop-shadow-xl">
+              <div className="h-16 w-1 bg-emerald-500 rounded-full" />
+              <p className="text-white text-xl font-semibold leading-relaxed max-w-sm drop-shadow-xl">
                 "We'll send a secure OTP to get you back into your Verse account quickly."
-              </Text>
+              </p>
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.5 }} transition={{ delay: 2, duration: 1 }} className="flex gap-8">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.5 }} transition={{ delay: 2, duration: 1 }} className="flex justify-between w-3/4">
             <div className="flex items-center gap-2">
-              <FiShield className="text-black" size={12} />
-              <span className="text-[10px] font-black tracking-[0.4em] text-black uppercase">Secure</span>
+              <FiShield className="text-white" size={12} />
+              <span className="text-[14px] font-black tracking-[0.4em] text-white uppercase">Secure</span>
             </div>
             <div className="flex items-center gap-2">
-              <FiMail className="text-black" size={12} />
-              <span className="text-[10px] font-black tracking-[0.4em] text-black uppercase">Email OTP</span>
+              <FiMail className="text-white" size={12} />
+              <span className="text-[14px] font-black tracking-[0.4em] text-white uppercase">Email OTP</span>
             </div>
           </motion.div>
         </div>
@@ -100,18 +100,18 @@ const ForgotPassword = () => {
           <div className="mb-8">
             <motion.div initial={{ width: 0 }} animate={{ width: 40 }} transition={{ delay: 0.5, duration: 1 }} className="h-[2px] bg-emerald-500 mb-5" />
             <Title className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none mb-3">
-              FORGOT <span className="text-emerald-500 italic">PASSWORD.</span>
+              FORGOT <span className="text-emerald-500">PASSWORD.</span>
             </Title>
-            <Text className="text-white/50 font-semibold text-sm italic">
+            <p className="text-white/50 font-semibold text-sm">
               Enter your email to receive a reset code.
-            </Text>
+            </p>
           </div>
 
           <div className="glass-dark p-8 md:p-10 rounded-[2rem] border border-white/10 bg-white/[0.02] shadow-2xl">
             <form onSubmit={handleSubmit}>
               <Stack gap="lg">
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }}>
-                  <Text className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400 mb-2 ml-1">Registered Email</Text>
+                  <p className="text-[14px] font-bold uppercase tracking-[0.2em] text-emerald-400 mb-2 ml-1">Registered Email</p>
                   <TextInput
                     placeholder="Email address"
                     leftSection={<FiMail size={16} className="text-emerald-500" />}
@@ -134,17 +134,17 @@ const ForgotPassword = () => {
                     size="lg"
                     className="bg-emerald-500 hover:bg-emerald-400 h-14 rounded-xl font-black text-xs uppercase tracking-[0.3em] shadow-[0_10px_30px_rgba(16,185,129,0.3)] border-none transition-all duration-500 group"
                   >
-                    Send Reset Code <FiZap className="ml-2 group-hover:scale-125 transition-transform" />
+                    Send Code
                   </Button>
                 </motion.div>
 
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="text-center">
-                  <Text className="text-white/30 font-bold italic text-xs">
+                  <p className="text-white/30 font-bold text-xs">
                     Remembered it?{" "}
-                    <Link to="/login" className="text-emerald-500 hover:text-emerald-400 transition-colors no-underline font-black not-italic uppercase tracking-widest">
+                    <Link to="/login" className="text-emerald-500 hover:text-emerald-400 transition-colors no-underline font-black uppercase tracking-widest">
                       Login
                     </Link>
-                  </Text>
+                  </p>
                 </motion.div>
               </Stack>
             </form>

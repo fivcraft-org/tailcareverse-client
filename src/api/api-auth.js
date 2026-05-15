@@ -10,8 +10,10 @@ export const verifyRegisterOTP = async (data) => {
   return res.data;
 };
 
-export const resendRegisterOTP = (payload) =>
-  axios.post("/auth/resend-register-otp", payload);
+export const resendRegisterOTP = async (payload) => {
+  const res = await axios.post("/auth/resend-register-otp", payload);
+  return res.data;
+};
 
 export const loginUser = async (data) => {
   const res = await axios.post("/auth/login", data);
@@ -23,8 +25,10 @@ export const verifyLoginOTP = async (data) => {
   return res.data;
 };
 
-export const resendLoginOTP = (payload) =>
-  axios.post("/auth/resend-login-otp", payload);
+export const resendLoginOTP = async (payload) => {
+  const res = await axios.post("/auth/resend-login-otp", payload);
+  return res.data;
+};
 
 export const resendOTP = async (data) => {
   const res = await axios.post("/auth/resend-otp", data);
@@ -46,8 +50,10 @@ export const verifyForgotPasswordOTP = async (data) => {
   return res.data;
 };
 
-export const resendForgotPasswordOTP = (payload) =>
-  axios.post("/auth/resend-forgot-password-otp", payload);
+export const resendForgotPasswordOTP = async (payload) => {
+  const res = await axios.post("/auth/resend-forgot-password-otp", payload);
+  return res.data;
+};
 
 export const getProfile = async () => {
   const res = await axios.get("/auth/me");
